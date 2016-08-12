@@ -1,0 +1,82 @@
+<script src="js/js.js"></script>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<form name="login" id="login" action="api/index.php?uri=user/login" method="post">
+	<input type="text" name="email1" id="email1" placeholder="email"/>
+	<input type="text" name="pass1" id="pass1" placeholder="password"/>
+	<input type="submit">
+</form>
+
+<form name="signup" id="signup" action="api/index.php?uri=user/signup" method="post">
+	<input type="text" id="email2" placeholder="email"/>
+	<input type="text" id="pass2" placeholder="password"/>
+	<input type="text" id="firstname" placeholder="first name"/>
+	<input type="text" id="lastname" placeholder="last name"/>
+	<input type="submit">
+</form>
+
+<form name="auth" action="api/index.php?uri=tickets/auth" method="post">
+	<input type="text" name="token" placeholder="auth token"/>
+	<input type="submit">
+</form>
+
+<script>
+$(document).ready(function(){ 
+	
+	$("#login").submit(function(e) { 
+		 e.preventDefault();
+		 
+	 	var email = $("#email1").val();
+	 	var pass = $("#pass1").val();
+		
+		if(email.length >= 5 && pass.length > 0) {
+			console.log('go');
+			$.ajax({
+				type: "POST",
+				url: "api/index.php?uri=user/login",
+				crossDomain: true,
+				data: {'email':email, 'pass':pass},
+				dataType: "json",
+				success: function (data, status, jqXHR) {
+					if(data.error) {
+						console.log(data.error);
+					} else {
+						console.log(data);
+						storage.setItem('token', data.token);
+						window.location = 'index.html';
+					}
+				}
+			});
+		}
+	 });
+	 
+ 	$("#signup").submit(function(e) { 
+ 		 e.preventDefault();
+		 
+ 	 	var email = $("#email2").val();
+ 	 	var pass = $("#pass2").val();
+		var firstname = $("#firstname").val();
+		var lastname = $("#lastname").val();
+		
+ 		if(email.length >= 5 && pass.length > 0 && firstname.length >= 2 && lastname.length >= 2) {
+ 			console.log('go');
+ 			$.ajax({
+ 				type: "POST",
+ 				url: "api/index.php?uri=user/signup",
+ 				crossDomain: true,
+ 				data: {'email':email, 'pass':pass, 'firstname': firstname, 'lastname': lastname},
+ 				dataType: "json",
+ 				success: function (data, status, jqXHR) {
+ 					if(data.error) {
+ 						console.log(data.error);
+ 					} else {
+ 						console.log(data);
+ 						storage.setItem('token', data.token);
+ 						window.location = 'index.html';
+ 					}
+ 				}
+ 			});
+ 		}
+ 	 });
+	
+});
+</script>
