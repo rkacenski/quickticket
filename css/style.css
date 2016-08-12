@@ -310,6 +310,7 @@ form input {
     padding: 10px 10px 10px 10px;
     font-size: 13px;
 	width: 100%;
+	margin-bottom: 8px;
 }
 
 form textarea {
@@ -347,7 +348,7 @@ form input[type="submit"] {
 		-o-transition: all 0.3s ease-in-out;
 		-ms-transition: all 0.3s ease-in-out;
 		transition: all 0.3s ease-in-out;
-		max-width: 130px;
+		max-width: 200px;
 	
 }
 form input[type="submit"]:hover {
