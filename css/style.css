@@ -1,7 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Kanit:400,500italic,500);
 
 
-body{ background: url("../../background1.jpg") }
+body{ background: url("../img/bg.jpg") repeat}
 
 
 /* ======== */
@@ -129,13 +129,13 @@ a.delete:hover {
 
 
 .return-home:hover {
-	background: url("../homehover.png");
+	background: url("../img/homehover.png");
     background-size: 60px 60px;
     background-repeat: no-repeat;
 }
 
 .logout {
-	background: url("../signout.png");
+	background: url("../img/signout.png");
 	width: 92px;
     height: 60px;
     display: block;
@@ -145,7 +145,7 @@ a.delete:hover {
 }
 
 .logout:hover {
-	background: url("../signouthover.png");
+	background: url("../img/signouthover.png");
     background-size: 92px 60px;
     background-repeat: no-repeat;
 }
